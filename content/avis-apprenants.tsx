@@ -22,7 +22,7 @@ const youtubePoster = (id: string, alt: string) => ({
 
 export const copyright = "2026 ©Studi tous droits réservés."
 
-export const nav: { links: (Cta & { current?: boolean })[]; cta: Cta } = {
+export const nav: { links: (Cta & { current?: boolean })[]; cta?: Cta } = {
   links: [
     { label: "Formations", href: links.formations },
     { label: "Webinars", href: links.lives },
@@ -32,13 +32,12 @@ export const nav: { links: (Cta & { current?: boolean })[]; cta: Cta } = {
   cta: { label: "Trouver ma formation", href: links.formations },
 }
 
+/** Note moyenne des avis Studi (donnée fournie par l'équipe). */
+export const rating = { rating: 4.5, count: 9468 }
+
 export const hero: HeroCenteredProps = {
   title: "Ils se sont formés avec Studi",
   lead: "Accompagnement, alternance, réussite : découvrez ce que nos apprenants disent de leur parcours avec Studi et de leurs conseillers.",
-  ctas: [
-    { label: "Trouver ma formation", href: links.formations },
-    { label: "Voir les témoignages", href: "#temoignages" },
-  ],
 }
 
 export const wall: ReviewWallProps = {

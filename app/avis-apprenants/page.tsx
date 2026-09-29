@@ -2,8 +2,7 @@ import type { Metadata } from "next"
 
 import { SiteFooter } from "@/components/lp/site"
 import { SiteNav } from "@/components/lp/site-nav"
-import { Card, CardContent } from "@/components/ui/card"
-import { TrustpilotWidget } from "@/components/lp/site"
+import { RatingSummary } from "@/components/lp/rating-summary"
 import { Footnotes } from "@/components/sections/footnotes"
 import { HeroCentered } from "@/components/sections/hero-centered"
 import { ReviewWall } from "@/components/sections/review-wall"
@@ -20,11 +19,7 @@ export default function Page() {
       <SiteNav {...content.nav} />
       <main className="flex-1">
         <HeroCentered {...content.hero}>
-          <Card className="w-full max-w-xl">
-            <CardContent>
-              <TrustpilotWidget />
-            </CardContent>
-          </Card>
+          <RatingSummary {...content.rating} />
         </HeroCentered>
         <ReviewWall {...content.wall} />
         <Footnotes notes={content.mentions} />
