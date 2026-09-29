@@ -1,26 +1,262 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@custom-variant dark (&:is(.dark *));
+
+/* === Tokens Studi (générés) === */
+/* Généré par scripts/build-tokens.mjs depuis brand/studi-colors.json et brand/studi-tokens.json — ne pas modifier à la main (npm run tokens). */
+@theme {
+  /* Couleurs — utilitaires bg-brand-green, text-neutral-600, border-accent-1… */
+  --color-brand-green:              #0D302D; /* Aplats de marque, pictogramme */
+  --color-brand-green-soft:         #E9F6F5; /* Fonds d'accent discrets, survol de menu */
+  --color-accent-1:                 #EDF878; /* Bandeaux d'offre, et CTA sur fond sombre */
+  --color-accent-2:                 #F87363; /* Bandeaux d'énergie, illustrations — orange.400 */
+  --color-accent-2-soft:            #FFCCD1; /* En-têtes, fonds doux — orange.200 */
+  --color-neutral-0:                #FFFFFF; /* Fond des surfaces */
+  --color-neutral-50:               #FAFAF9; /* Fond de la navigation */
+  --color-neutral-100:              #F5F5F4; /* Fond de page, zones inactives */
+  --color-neutral-200:              #E7E5E4; /* Bordures fines, séparateurs */
+  --color-neutral-300:              #D7D3D0; /* Bordures appuyées, états désactivés */
+  --color-neutral-400:              #A9A39D; /* Icônes secondaires, texte désactivé */
+  --color-neutral-500:              #79726B; /* Texte tertiaire, métadonnées */
+  --color-neutral-600:              #58544D; /* Texte secondaire */
+  --color-neutral-700:              #45413B; /* Texte d'appui sur fond clair */
+  --color-neutral-800:              #2F2A28; /* Aplats sombres */
+  --color-neutral-900:              #1D1916; /* Texte principal */
+  --color-neutral-950:              #0C0A09; /* Aplats les plus sombres */
+  --color-orange-50:                #FEF2F3; /* Fond très clair */
+  --color-orange-100:               #FFE3E6; /* Fond clair */
+  --color-orange-200:               #FFCCD1; /* En-tête, fond doux */
+  --color-orange-300:               #FFA8A7; /* Bordures, illustrations */
+  --color-orange-400:               #F87363; /* Aplat d'accent clair */
+  --color-orange-500:               #F04A33; /* Aplat d'accent soutenu */
+  --color-orange-600:               #DC2D0D; /* Survol de l'aplat */
+  --color-orange-700:               #B82307; /* Appui, texte blanc */
+  --color-orange-800:               #981F0F; /* Aplat sombre */
+  --color-orange-900:               #7E2016; /* Aplat très sombre */
+  --color-orange-950:               #450C06; /* Aplat le plus sombre */
+  --color-success:                  #16A34A; /* Validation, ressource approuvée */
+  --color-warning:                  #F59E0B; /* Révision à prévoir */
+  --color-danger:                   #DC2626; /* Erreur, ressource dépréciée */
+  --color-info:                     #2563EB; /* Information neutre */
+  --color-accent-1-hover:           #DAE46E; /* Survol du CTA accent 1 */
+  --color-accent-1-active:          #C7D065; /* Appui du CTA accent 1 */
+  --color-logo:                     #070A0D; /* Logotype monochrome : ce noir ou le blanc, rien d'autre */
+
+  /* Typographie Brand OS — text-display, text-heading-1, text-heading-2, text-body, text-caption */
+  --text-display: 48px;
+  --text-display--line-height: 56px;
+  --text-display--font-weight: 600;
+  --text-heading-1: 30px;
+  --text-heading-1--line-height: 38px;
+  --text-heading-1--font-weight: 600;
+  --text-heading-2: 20px;
+  --text-heading-2--line-height: 28px;
+  --text-heading-2--font-weight: 600;
+  --text-body: 14px;
+  --text-body--line-height: 22px;
+  --text-body--font-weight: 400;
+  --text-caption: 12px;
+  --text-caption--line-height: 16px;
+  --text-caption--font-weight: 500;
+
+  /* Rayons Brand OS — rounded-sm, rounded-md, rounded-lg, rounded-xl, rounded-full */
+  --radius-sm:                      6px; /* Puces, éléments compacts */
+  --radius-md:                      8px; /* Tags, champs, menus */
+  --radius-lg:                      10px; /* Cartes, images, panneaux */
+  --radius-xl:                      14px; /* Modales */
+  --radius-full:                    9999px; /* Boutons, avatars, pastilles */
+
+  /* Conteneur — max-w-page */
+  --container-page:                 1200px;
 }
+/* === Fin des tokens Studi === */
+
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-sans);
   --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Tokens sémantiques shadcn → Studi. Surface par défaut : « Page ». */
+:root {
+  --background: var(--color-neutral-0);
+  --foreground: var(--color-neutral-900);
+  --card: var(--color-neutral-0);
+  --card-foreground: var(--color-neutral-900);
+  --popover: var(--color-neutral-0);
+  --popover-foreground: var(--color-neutral-900);
+  /* CTA par défaut : l'encre. Il bascule sur accent-1 sur les surfaces sombres (voir .surface-*) */
+  --primary: var(--color-neutral-900);
+  --primary-foreground: var(--color-neutral-0);
+  --secondary: var(--color-neutral-100);
+  --secondary-foreground: var(--color-neutral-900);
+  --muted: var(--color-neutral-100);
+  --muted-foreground: var(--color-neutral-600);
+  /* « accent » shadcn = survol de menu, pas les accents Studi */
+  --accent: var(--color-brand-green-soft);
+  --accent-foreground: var(--color-brand-green);
+  --destructive: var(--color-danger);
+  --border: var(--color-neutral-200);
+  --input: var(--color-neutral-200);
+  --ring: var(--color-brand-green);
+  /* États des boutons hors surface (identiques à on-light) */
+  --primary-hover: var(--color-neutral-800);
+  --primary-active: var(--color-neutral-950);
+  --secondary-bg: var(--color-neutral-0);
+  --secondary-fg: var(--color-neutral-900);
+  --secondary-border: var(--color-neutral-200);
+  --secondary-hover: var(--color-neutral-100);
+  --secondary-active: var(--color-neutral-200);
+  --chart-1: var(--color-brand-green);
+  --chart-2: var(--color-accent-2);
+  --chart-3: var(--color-accent-1);
+  --chart-4: var(--color-neutral-500);
+  --chart-5: var(--color-accent-2-soft);
+  --radius: 0.625rem;
+  --sidebar: var(--color-neutral-50);
+  --sidebar-foreground: var(--color-neutral-900);
+  --sidebar-primary: var(--color-neutral-900);
+  --sidebar-primary-foreground: var(--color-neutral-0);
+  --sidebar-accent: var(--color-brand-green-soft);
+  --sidebar-accent-foreground: var(--color-brand-green);
+  --sidebar-border: var(--color-neutral-200);
+  --sidebar-ring: var(--color-brand-green);
 }
 
-body {
-  background: var(--background);
+/*
+ * Surfaces Studi — « la seule décision à prendre ».
+ * Chaque surface fixe le fond, le texte et le CTA (<Button> par défaut) d'un bloc.
+ * Le brand kit ne définit pas de mode sombre : utilisez surface-ink / surface-brand.
+ */
+/*
+ * Contextes partagés (Brand OS, boutons d'action) : ce que texte, CTA et focus deviennent
+ * sur fond clair ou sombre. Survol et appui changent de token, jamais d'opacité.
+ */
+@utility on-light {
+  --foreground: var(--color-neutral-900);
+  --muted-foreground: var(--color-neutral-600);
+  /* Principal : encre */
+  --primary: var(--color-neutral-900);
+  --primary-foreground: var(--color-neutral-0);
+  --primary-hover: var(--color-neutral-800);
+  --primary-active: var(--color-neutral-950);
+  /* Secondaire : blanc bordé neutral.200 */
+  --secondary-bg: var(--color-neutral-0);
+  --secondary-fg: var(--color-neutral-900);
+  --secondary-border: var(--color-neutral-200);
+  --secondary-hover: var(--color-neutral-100);
+  --secondary-active: var(--color-neutral-200);
+  --ring: var(--color-brand-green);
+}
+/* Fond sombre : CTA accent 1 (libellé encre), secondaire « inversé » blanc, anneau blanc */
+@utility on-dark {
+  --foreground: var(--color-neutral-0);
+  --primary: var(--color-accent-1);
+  --primary-foreground: var(--color-neutral-900);
+  --primary-hover: var(--color-accent-1-hover);
+  --primary-active: var(--color-accent-1-active);
+  --secondary-bg: var(--color-neutral-0);
+  --secondary-fg: var(--color-neutral-900);
+  --secondary-border: var(--color-neutral-0);
+  --secondary-hover: var(--color-neutral-200);
+  --secondary-active: var(--color-neutral-300);
+  --ring: var(--color-neutral-0);
+}
+
+@utility surface-page {
+  @apply on-light;
+  --background: var(--color-neutral-0);
+  background-color: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+}
+@utility surface-block {
+  @apply on-light;
+  --background: var(--color-neutral-50);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+/* Accents : ils ne portent que l'encre (ou le vert de marque), texte secondaire compris.
+   Pas de CTA accent-1 sur accent-1 : le CTA reste à l'encre. */
+@utility surface-accent-1 {
+  @apply on-light;
+  --background: var(--color-accent-1);
+  --muted-foreground: var(--color-neutral-900);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+@utility surface-accent-2-soft {
+  @apply on-light;
+  --background: var(--color-accent-2-soft);
+  --muted-foreground: var(--color-neutral-900);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+/* Orange saturé : titres courts et aplats uniquement */
+@utility surface-accent-2 {
+  @apply on-light;
+  --background: var(--color-accent-2);
+  --muted-foreground: var(--color-neutral-900);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+/* Texte secondaire : vert doux sur vert de marque (12,83:1), comme la lame Trustpilot */
+@utility surface-brand {
+  @apply on-dark;
+  --background: var(--color-brand-green);
+  --muted-foreground: var(--color-brand-green-soft);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+@utility surface-ink {
+  @apply on-dark;
+  --background: var(--color-neutral-900);
+  --muted-foreground: var(--color-neutral-0);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  html {
+    @apply font-sans;
+  }
 }

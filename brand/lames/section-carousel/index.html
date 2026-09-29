@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section Carousel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* === Tokens Studi — Généré par scripts/build-tokens.mjs depuis brand/studi-colors.json et brand/studi-tokens.json — ne pas modifier à la main (npm run tokens). === */
+    :root {
+      --brand-green:                    #0D302D;
+      --brand-green-soft:               #E9F6F5;
+      --accent-1:                       #EDF878;
+      --accent-2:                       #F87363;
+      --accent-2-soft:                  #FFCCD1;
+      --neutral-0:                      #FFFFFF;
+      --neutral-50:                     #FAFAF9;
+      --neutral-100:                    #F5F5F4;
+      --neutral-200:                    #E7E5E4;
+      --neutral-300:                    #D7D3D0;
+      --neutral-400:                    #A9A39D;
+      --neutral-500:                    #79726B;
+      --neutral-600:                    #58544D;
+      --neutral-700:                    #45413B;
+      --neutral-800:                    #2F2A28;
+      --neutral-900:                    #1D1916;
+      --neutral-950:                    #0C0A09;
+      --orange-50:                      #FEF2F3;
+      --orange-100:                     #FFE3E6;
+      --orange-200:                     #FFCCD1;
+      --orange-300:                     #FFA8A7;
+      --orange-400:                     #F87363;
+      --orange-500:                     #F04A33;
+      --orange-600:                     #DC2D0D;
+      --orange-700:                     #B82307;
+      --orange-800:                     #981F0F;
+      --orange-900:                     #7E2016;
+      --orange-950:                     #450C06;
+      --success:                        #16A34A;
+      --warning:                        #F59E0B;
+      --danger:                         #DC2626;
+      --info:                           #2563EB;
+      --accent-1-hover:                 #DAE46E;
+      --accent-1-active:                #C7D065;
+      --logo:                           #070A0D;
+      --logo-black: var(--logo); /* alias historique des maquettes */
+
+      --font-sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+      /* Espacements (échelle 4px) */
+      --space-4:                        4px;
+      --space-6:                        6px;
+      --space-8:                        8px;
+      --space-12:                       12px;
+      --space-16:                       16px;
+      --space-24:                       24px;
+      --space-32:                       32px;
+      --space-48:                       48px;
+
+      /* Rayons */
+      --radius-sm:                      6px;
+      --radius-md:                      8px;
+      --radius-lg:                      10px;
+      --radius-xl:                      14px;
+      --radius-full:                    9999px;
+    }
+    /* === Fin des tokens Studi === */
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-sans); background: var(--neutral-100); }
+
+    .section-carousel {
+      display: flex;
+      justify-content: center;
+      padding: 0 16px;
+      background: var(--neutral-100);
+    }
+
+    .section-carousel__container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-24);
+      width: 100%;
+      max-width: 1200px;
+      padding: var(--space-48) 0;
+    }
+
+    /* Piste */
+    .carousel__track {
+      --gap: var(--space-32);
+      --per-view: 2;
+      display: flex;
+      gap: var(--gap);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
+    }
+    .carousel__track::-webkit-scrollbar { display: none; }
+    .carousel__track:focus-visible { outline: 2px solid var(--neutral-900); outline-offset: 4px; border-radius: var(--radius-lg); }
+
+    .carousel__slide {
+      flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+      scroll-snap-align: start;
+    }
+
+    /* Carte */
+    .card {
+      display: flex;
+      flex-direction: column;
+      height: 500px;
+      overflow: hidden;
+      background: var(--neutral-0);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-lg);
+    }
+
+    .card__text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-12);
+      padding: var(--space-32) var(--space-24) var(--space-24);
+      color: var(--neutral-900);
+    }
+    .card__category { margin: 0; font-size: 12px; font-weight: 500; line-height: 16px; color: var(--neutral-600); }
+    .card__title { margin: 0; font-size: 20px; font-weight: 600; line-height: 28px; }
+
+    .card__photo {
+      position: relative;
+      flex-shrink: 0;
+      height: 350px;
+    }
+    .card__photo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .card__photo::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, var(--neutral-0) 0%, rgba(255, 255, 255, 0) 37.204%);
+    }
+
+    /* Contrôles */
+    .carousel__controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-16);
+    }
+
+    .carousel__dots { display: flex; align-items: center; gap: 8px; }
+    .carousel__dot {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: 0;
+      border-radius: var(--radius-full);
+      background: var(--neutral-300);
+      cursor: pointer;
+      transition: width .2s ease, background-color .2s ease;
+    }
+    .carousel__dot[aria-current="true"] { width: 24px; background: var(--neutral-900); }
+
+    .carousel__nav { display: flex; gap: var(--space-12); }
+    .carousel__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      background: var(--neutral-0);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: background-color .15s ease, opacity .15s ease;
+    }
+    .carousel__btn:hover:not(:disabled) { background: var(--neutral-100); }
+    .carousel__btn:active:not(:disabled) { background: var(--neutral-200); }
+    .carousel__btn:disabled { opacity: .5; cursor: default; }
+    .carousel__btn img { display: block; width: 16px; height: 16px; }
+    .carousel__btn--prev img { transform: scaleX(-1); }
+    .carousel__dot:focus-visible,
+    .carousel__btn:focus-visible { outline: 2px solid var(--neutral-900); outline-offset: 3px; }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+      .carousel__track { --per-view: 1.12; --gap: var(--space-16); }
+      .card { height: 460px; }
+      .card__text { padding: var(--space-24) var(--space-16) var(--space-16); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .carousel__track { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <section class="section-carousel" aria-roledescription="carrousel" aria-label="Nos formations">
+    <div class="section-carousel__container">
+      <ul class="carousel__track" tabindex="0" aria-label="Formations, faites défiler horizontalement">
+        <li class="carousel__slide" aria-roledescription="diapositive" aria-label="1 sur 4">
+          <article class="card">
+            <div class="card__text">
+              <p class="card__category">Finance - Comptabilité</p>
+              <h3 class="card__title">Devenez un expert hautement qualifié de la transformation des ressources humaines. Un cursus d'excellence flexible pou</h3>
+            </div>
+            <div class="card__photo">
+              <img src="assets/photo-formation.jpg" alt="" />
+            </div>
+          </article>
+        </li>
+        <li class="carousel__slide" aria-roledescription="diapositive" aria-label="2 sur 4">
+          <article class="card">
+            <div class="card__text">
+              <p class="card__category">Finance - Comptabilité</p>
+              <h3 class="card__title">Devenez un expert hautement qualifié de la transformation des ressources humaines. Un cursus d'excellence flexible pou</h3>
+            </div>
+            <div class="card__photo">
+              <img src="assets/photo-formation.jpg" alt="" />
+            </div>
+          </article>
+        </li>
+        <li class="carousel__slide" aria-roledescription="diapositive" aria-label="3 sur 4">
+          <article class="card">
+            <div class="card__text">
+              <p class="card__category">Finance - Comptabilité</p>
+              <h3 class="card__title">Devenez un expert hautement qualifié de la transformation des ressources humaines. Un cursus d'excellence flexible pou</h3>
+            </div>
+            <div class="card__photo">
+              <img src="assets/photo-formation.jpg" alt="" loading="lazy" />
+            </div>
+          </article>
+        </li>
+        <li class="carousel__slide" aria-roledescription="diapositive" aria-label="4 sur 4">
+          <article class="card">
+            <div class="card__text">
+              <p class="card__category">Finance - Comptabilité</p>
+              <h3 class="card__title">Devenez un expert hautement qualifié de la transformation des ressources humaines. Un cursus d'excellence flexible pou</h3>
+            </div>
+            <div class="card__photo">
+              <img src="assets/photo-formation.jpg" alt="" loading="lazy" />
+            </div>
+          </article>
+        </li>
+      </ul>
+
+      <div class="carousel__controls">
+        <div class="carousel__dots" role="group" aria-label="Choisir une position"></div>
+        <div class="carousel__nav">
+          <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Précédent">
+            <img src="assets/icon-arrow-right.svg" alt="" width="20" height="20" />
+          </button>
+          <button class="carousel__btn carousel__btn--next" type="button" aria-label="Suivant">
+            <img src="assets/icon-arrow-right.svg" alt="" width="20" height="20" />
+          </button>
+        </div>
+      </div>
+      <p class="visually-hidden" aria-live="polite" data-carousel-status></p>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      const root = document.querySelector('.section-carousel');
+      const track = root.querySelector('.carousel__track');
+      const slides = [...track.children];
+      const prev = root.querySelector('.carousel__btn--prev');
+      const next = root.querySelector('.carousel__btn--next');
+      const dotsWrap = root.querySelector('.carousel__dots');
+      const status = root.querySelector('[data-carousel-status]');
+      let dots = [];
+      let current = -1;
+
+      // Distance entre deux diapositives (largeur + gap)
+      const step = () => slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth;
+      // Nombre de positions atteignables (ex. 4 cartes, 2 visibles → 3 positions)
+      const positions = () => Math.max(1, Math.round((track.scrollWidth - track.clientWidth) / step()) + 1);
+
+      function buildDots() {
+        const count = positions();
+        if (dots.length === count) return;
+        dotsWrap.innerHTML = '';
+        dots = Array.from({ length: count }, (_, i) => {
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'carousel__dot';
+          dot.setAttribute('aria-label', `Aller à la position ${i + 1}`);
+          dot.addEventListener('click', () => goTo(i));
+          dotsWrap.appendChild(dot);
+          return dot;
+        });
+        dotsWrap.hidden = count < 2;
+        current = -1;
+      }
+
+      // Position lue depuis le défilement réel (ne dépend pas de la réception des événements scroll)
+      function indexFromScroll() {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        return track.scrollLeft >= maxScroll - 2 ? positions() - 1 : Math.round(track.scrollLeft / step());
+      }
+
+      function goTo(index) {
+        const max = positions() - 1;
+        track.scrollTo({ left: Math.min(Math.max(index, 0), max) * step() });
+      }
+
+      function update() {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        const index = indexFromScroll();
+        prev.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft >= maxScroll - 2;
+        if (index === current) return;
+        current = index;
+        dots.forEach((dot, i) => dot.setAttribute('aria-current', i === index ? 'true' : 'false'));
+        status.textContent = `Position ${index + 1} sur ${dots.length}`;
+      }
+
+      prev.addEventListener('click', () => goTo(indexFromScroll() - 1));
+      next.addEventListener('click', () => goTo(indexFromScroll() + 1));
+      track.addEventListener('scroll', update, { passive: true });
+      track.addEventListener('scrollend', update);
+      window.addEventListener('resize', () => { buildDots(); update(); });
+
+      buildDots();
+      update();
+    })();
+  </script>
+</body>
+</html>

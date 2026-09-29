@@ -1,0 +1,183 @@
+{
+  "$description": "Couleurs de la marque Studi. Exporté depuis Brand OS. Format Design Tokens (W3C DTCG).",
+  "brand": {
+    "green": {
+      "default": {
+        "$type": "color",
+        "$value": "#0D302D",
+        "$description": "Aplats de marque, pictogramme"
+      },
+      "soft": {
+        "$type": "color",
+        "$value": "#E9F6F5",
+        "$description": "Fonds d'accent discrets, survol de menu"
+      }
+    }
+  },
+  "accent": {
+    "1": {
+      "$type": "color",
+      "$value": "#EDF878",
+      "$description": "Bandeaux d'offre, et CTA sur fond sombre"
+    },
+    "2": {
+      "default": {
+        "$type": "color",
+        "$value": "#F87363",
+        "$description": "Bandeaux d'énergie, illustrations — orange.400"
+      },
+      "soft": {
+        "$type": "color",
+        "$value": "#FFCCD1",
+        "$description": "En-têtes, fonds doux — orange.200"
+      }
+    }
+  },
+  "neutral": {
+    "0": {
+      "$type": "color",
+      "$value": "#FFFFFF",
+      "$description": "Fond des surfaces"
+    },
+    "50": {
+      "$type": "color",
+      "$value": "#FAFAF9",
+      "$description": "Fond de la navigation"
+    },
+    "100": {
+      "$type": "color",
+      "$value": "#F5F5F4",
+      "$description": "Fond de page, zones inactives"
+    },
+    "200": {
+      "$type": "color",
+      "$value": "#E7E5E4",
+      "$description": "Bordures fines, séparateurs"
+    },
+    "300": {
+      "$type": "color",
+      "$value": "#D7D3D0",
+      "$description": "Bordures appuyées, états désactivés"
+    },
+    "400": {
+      "$type": "color",
+      "$value": "#A9A39D",
+      "$description": "Icônes secondaires, texte désactivé"
+    },
+    "500": {
+      "$type": "color",
+      "$value": "#79726B",
+      "$description": "Texte tertiaire, métadonnées"
+    },
+    "600": {
+      "$type": "color",
+      "$value": "#58544D",
+      "$description": "Texte secondaire"
+    },
+    "700": {
+      "$type": "color",
+      "$value": "#45413B",
+      "$description": "Texte d'appui sur fond clair"
+    },
+    "800": {
+      "$type": "color",
+      "$value": "#2F2A28",
+      "$description": "Aplats sombres"
+    },
+    "900": {
+      "$type": "color",
+      "$value": "#1D1916",
+      "$description": "Texte principal"
+    },
+    "950": {
+      "$type": "color",
+      "$value": "#0C0A09",
+      "$description": "Aplats les plus sombres"
+    }
+  },
+  "orange": {
+    "50": {
+      "$type": "color",
+      "$value": "#FEF2F3",
+      "$description": "Fond très clair"
+    },
+    "100": {
+      "$type": "color",
+      "$value": "#FFE3E6",
+      "$description": "Fond clair"
+    },
+    "200": {
+      "$type": "color",
+      "$value": "#FFCCD1",
+      "$description": "En-tête, fond doux"
+    },
+    "300": {
+      "$type": "color",
+      "$value": "#FFA8A7",
+      "$description": "Bordures, illustrations"
+    },
+    "400": {
+      "$type": "color",
+      "$value": "#F87363",
+      "$description": "Aplat d'accent clair"
+    },
+    "500": {
+      "$type": "color",
+      "$value": "#F04A33",
+      "$description": "Aplat d'accent soutenu"
+    },
+    "600": {
+      "$type": "color",
+      "$value": "#DC2D0D",
+      "$description": "Survol de l'aplat"
+    },
+    "700": {
+      "$type": "color",
+      "$value": "#B82307",
+      "$description": "Appui, texte blanc"
+    },
+    "800": {
+      "$type": "color",
+      "$value": "#981F0F",
+      "$description": "Aplat sombre"
+    },
+    "900": {
+      "$type": "color",
+      "$value": "#7E2016",
+      "$description": "Aplat très sombre"
+    },
+    "950": {
+      "$type": "color",
+      "$value": "#450C06",
+      "$description": "Aplat le plus sombre"
+    }
+  },
+  "success": {
+    "default": {
+      "$type": "color",
+      "$value": "#16A34A",
+      "$description": "Validation, ressource approuvée"
+    }
+  },
+  "warning": {
+    "default": {
+      "$type": "color",
+      "$value": "#F59E0B",
+      "$description": "Révision à prévoir"
+    }
+  },
+  "danger": {
+    "default": {
+      "$type": "color",
+      "$value": "#DC2626",
+      "$description": "Erreur, ressource dépréciée"
+    }
+  },
+  "info": {
+    "default": {
+      "$type": "color",
+      "$value": "#2563EB",
+      "$description": "Information neutre"
+    }
+  }
+}

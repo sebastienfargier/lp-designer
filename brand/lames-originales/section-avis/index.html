@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section Avis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* === Tokens Studi — générés depuis brand/studi-colors.json, ne pas modifier à la main === */
+    :root {
+      --brand-green: #0D302D;
+      --brand-green-soft: #E9F6F5;
+      --accent-1: #EDF878;
+      --accent-2: #F87363;
+      --accent-2-soft: #FFCCD1;
+      --neutral-0: #FFFFFF;
+      --neutral-50: #FAFAF9;
+      --neutral-100: #F5F5F4;
+      --neutral-200: #E7E5E4;
+      --neutral-300: #D7D3D0;
+      --neutral-400: #A9A39D;
+      --neutral-500: #79726B;
+      --neutral-600: #58544D;
+      --neutral-700: #45413B;
+      --neutral-800: #2F2A28;
+      --neutral-900: #1D1916;
+      --neutral-950: #0C0A09;
+      --orange-50: #FEF2F3;
+      --orange-100: #FFE3E6;
+      --orange-200: #FFCCD1;
+      --orange-300: #FFA8A7;
+      --orange-400: #F87363;
+      --orange-500: #F04A33;
+      --orange-600: #DC2D0D;
+      --orange-700: #B82307;
+      --orange-800: #981F0F;
+      --orange-900: #7E2016;
+      --orange-950: #450C06;
+      --success: #16A34A;
+      --warning: #F59E0B;
+      --danger: #DC2626;
+      --info: #2563EB;
+      --logo-black: #070A0D; /* logotype monochrome : noir #070A0D ou blanc (design.md) */
+
+      --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    /* === Fin des tokens Studi === */
+
+    :root {
+      /* Espacements */
+      --space-12: 12px;
+      --space-16: 16px;
+      --space-24: 24px;
+      --space-56: 56px;
+
+      /* Rayons */
+      --radius-base: 8px;
+      --radius-full: 9999px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-sans); background: var(--neutral-100); }
+
+    .section-avis {
+      display: flex;
+      justify-content: center;
+      padding: 0 16px;
+      background: var(--neutral-100);
+    }
+
+    .section-avis__container {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-24);
+      width: 100%;
+      max-width: 1200px;
+      padding: var(--space-56) 0;
+    }
+
+    /* Piste */
+    .carousel__track {
+      --gap: var(--space-24);
+      --per-view: 3;
+      display: flex;
+      gap: var(--gap);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      overscroll-behavior-x: contain;
+      scrollbar-width: none;
+    }
+    .carousel__track::-webkit-scrollbar { display: none; }
+    .carousel__track:focus-visible { outline: 2px solid var(--neutral-900); outline-offset: 4px; border-radius: var(--radius-base); }
+
+    .carousel__slide {
+      display: flex;
+      flex: 0 0 calc((100% - (var(--per-view) - 1) * var(--gap)) / var(--per-view));
+      scroll-snap-align: start;
+    }
+
+    /* Carte avis */
+    .testimonial {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      margin: 0;
+      padding: 32px;
+      background: var(--neutral-0);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-base);
+    }
+
+    .testimonial__top { display: flex; flex-direction: column; gap: 16px; }
+    .testimonial__quote-mark {
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 0.6;
+      color: var(--brand-green);
+    }
+    .testimonial__quote { margin: 0; }
+    .testimonial__quote p {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: var(--neutral-900);
+    }
+
+    .testimonial__bottom { display: flex; flex-direction: column; gap: 24px; padding-top: 24px; }
+
+    .testimonial__profile { display: flex; align-items: center; gap: 12px; }
+    .testimonial__avatar {
+      display: block;
+      flex-shrink: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 22px;
+      object-fit: cover;
+    }
+    .testimonial__meta { display: flex; flex-direction: column; gap: 2px; flex: 1 0 0; min-width: 0; line-height: normal; }
+    .testimonial__name { font-size: 14px; font-weight: 700; color: var(--neutral-900); }
+    .testimonial__role {
+      overflow: hidden;
+      font-size: 13px;
+      color: var(--neutral-500);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .testimonial__divider { display: block; width: 100%; height: 1px; }
+
+    .testimonial__link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      align-self: flex-start;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: normal;
+      color: var(--brand-green);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .testimonial__link img { display: block; width: 12px; height: 12px; transition: transform .15s ease; }
+    .testimonial__link:hover { text-decoration: underline; }
+    .testimonial__link:hover img { transform: translateX(2px); }
+    .testimonial__link:focus-visible { outline: 2px solid var(--brand-green); outline-offset: 3px; border-radius: 2px; }
+
+    /* Contrôles */
+    .carousel__controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-16);
+    }
+
+    .carousel__dots { display: flex; align-items: center; gap: 8px; }
+    .carousel__dot {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: 0;
+      border-radius: var(--radius-full);
+      background: var(--neutral-300);
+      cursor: pointer;
+      transition: width .2s ease, background-color .2s ease;
+    }
+    .carousel__dot[aria-current="true"] { width: 24px; background: var(--neutral-900); }
+
+    .carousel__nav { display: flex; gap: var(--space-12); }
+    .carousel__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      background: var(--neutral-0);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      transition: background-color .15s ease, opacity .15s ease;
+    }
+    .carousel__btn:hover:not(:disabled) { background: var(--neutral-100); }
+    .carousel__btn:disabled { opacity: .4; cursor: default; }
+    .carousel__btn img { display: block; width: 20px; height: 20px; }
+    .carousel__btn--prev img { transform: scaleX(-1); }
+    .carousel__dot:focus-visible,
+    .carousel__btn:focus-visible { outline: 2px solid var(--neutral-900); outline-offset: 3px; }
+
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 1024px) {
+      .carousel__track { --per-view: 2; }
+    }
+
+    @media (max-width: 640px) {
+      .section-avis__container { padding: 40px 0; }
+      .carousel__track { --per-view: 1.12; --gap: var(--space-16); }
+      .testimonial { padding: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .carousel__track { scroll-behavior: auto; }
+    }
+  </style>
+</head>
+<body>
+  <section class="section-avis" aria-roledescription="carrousel" aria-label="Avis de nos apprenants">
+    <div class="section-avis__container">
+      <ul class="carousel__track" tabindex="0" aria-label="Avis, faites défiler horizontalement">
+        <li class="carousel__slide" aria-roledescription="diapositive" aria-label="1 sur 6">
+          <figure class="testimonial">
+            <div class="testimonial__top">
+              <span class="testimonial__quote-mark" aria-hidden="true">“</span>
+              <blockquote class="testimonial__quote">
+                <p>Ce cours a très bien su expliquer l'IA, de son développement à ses applications. J'ai particulièrement apprécié la diversité des points de vue présentés, qui m'ont aidé à comprendre comment utiliser l'IA de manière responsable, comme un outil dans le cadre de mon métier, et non comme une simple nouveauté.</p>
+              </blockquote>
+            </div>
+            <div class="testimonial__bottom">
+              <figcaption class="testimonial__profile">
+                <img class="testimonial__avatar" src="assets/avatar.jpg" alt="" width="44" height="44" />
+                <span class="testimonial__meta">
+                  <span class="testimonial__name">Cris M.</span>
+                  <span class="testimonial__role">Google AI Essentials graduate</span>
+                </span>
+              </figcaption>
+              <img class="testimonial__divider" src="assets/divider-line.svg" alt="" width="320" height="1" />
+              <a class="testimonial__link" href="#">
+                Afficher les cours sur l'IA
+                <img src="assets/icon-chevron-right.svg" alt="" width="12" height="12" />
+              </a>
+            </div>
+          </figure>
+        </li>
+        <li class="carousel__slide" aria-roledescription="diapositive" aria-label="2 sur 6">
+          <figure class="testimonial">
+            <div class="testimonial__top">
+              <span class="testimonial__quote-mark" aria-hidden="true">“</span>
+              <blockquote class="testimonial__quote">
+                <p>Ce cours a très bien su expliquer l'IA, de son développement à ses applications. J'ai particulièrement apprécié la diversité des points de vue présentés, qui m'ont aidé à comprendre comment utiliser l'IA de manière responsable, comme un outil dans le cadre de mon métier, et non comme une simple nouveauté.</p>
+              </blockquote>
+            </div>
+            <div class="testimonial__bottom">
+              <figcaption class="testimonial__profile">
+                <img class="testimonial__avatar" src="assets/avatar.jpg" alt="" width="44" height="44" />
+                <span class="testimonial__meta">
+                  <span class="testimonial__name">Cris M.</span>
+                  <span class="testimonial__role">Google AI Essentials graduate</span>
+                </span>
+              </figcaption>
+              <img class="testimonial__divider" src="assets/divider-line.svg" alt="" width="320" height="1" />
+              <a class="testimonial__link" href="#">
+                Afficher les cours sur l'IA
+                <img src="assets/icon-chevron-right.svg" alt="" width="12" height="12" />
+              </a>
+            </div>
+          </figure>
+        </li>
+        <li class="carousel__slide" aria-roledescription="diapositive" aria-label="3 sur 6">
+          <figure class="testimonial">
+            <div class="testimonial__top">
+              <span class="testimonial__quote-mark" aria-hidden="true">“</span>
+              <blockquote class="testimonial__quote">
+                <p>Ce cours a très bien su expliquer l'IA, de son développement à ses applications. J'ai particulièrement apprécié la diversité des points de vue présentés, qui m'ont aidé à comprendre comment utiliser l'IA de manière responsable, comme un outil dans le cadre de mon métier, et non comme une simple nouveauté.</p>
+              </blockquote>
+            </div>
+            <div class="testimonial__bottom">
+              <figcaption class="testimonial__profile">
+                <img class="testimonial__avatar" src="assets/avatar.jpg" alt="" width="44" height="44" />
+                <span class="testimonial__meta">
+                  <span class="testimonial__name">Cris M.</span>
+                  <span class="testimonial__role">Google AI Essentials graduate</span>
+                </span>
+              </figcaption>
+              <img class="testimonial__divider" src="assets/divider-line.svg" alt="" width="320" height="1" />
+              <a class="testimonial__link" href="#">
+                Afficher les cours sur l'IA
+                <img src="assets/icon-chevron-right.svg" alt="" width="12" height="12" />
+              </a>
+            </div>
+          </figure>
+        </li>
+        <li class="carousel__slide" aria-roledescription="diapositive" aria-label="4 sur 6">
+          <figure class="testimonial">
+            <div class="testimonial__top">
+              <span class="testimonial__quote-mark" aria-hidden="true">“</span>
+              <blockquote class="testimonial__quote">
+                <p>Ce cours a très bien su expliquer l'IA, de son développement à ses applications. J'ai particulièrement apprécié la diversité des points de vue présentés, qui m'ont aidé à comprendre comment utiliser l'IA de manière responsable, comme un outil dans le cadre de mon métier, et non comme une simple nouveauté.</p>
+              </blockquote>
+            </div>
+            <div class="testimonial__bottom">
+              <figcaption class="testimonial__profile">
+                <img class="testimonial__avatar" src="assets/avatar.jpg" alt="" width="44" height="44" loading="lazy" />
+                <span class="testimonial__meta">
+                  <span class="testimonial__name">Cris M.</span>
+                  <span class="testimonial__role">Google AI Essentials graduate</span>
+                </span>
+              </figcaption>
+              <img class="testimonial__divider" src="assets/divider-line.svg" alt="" width="320" height="1" />
+              <a class="testimonial__link" href="#">
+                Afficher les cours sur l'IA
+                <img src="assets/icon-chevron-right.svg" alt="" width="12" height="12" />
+              </a>
+            </div>
+          </figure>
+        </li>
+        <li class="carousel__slide" aria-roledescription="diapositive" aria-label="5 sur 6">
+          <figure class="testimonial">
+            <div class="testimonial__top">
+              <span class="testimonial__quote-mark" aria-hidden="true">“</span>
+              <blockquote class="testimonial__quote">
+                <p>Ce cours a très bien su expliquer l'IA, de son développement à ses applications. J'ai particulièrement apprécié la diversité des points de vue présentés, qui m'ont aidé à comprendre comment utiliser l'IA de manière responsable, comme un outil dans le cadre de mon métier, et non comme une simple nouveauté.</p>
+              </blockquote>
+            </div>
+            <div class="testimonial__bottom">
+              <figcaption class="testimonial__profile">
+                <img class="testimonial__avatar" src="assets/avatar.jpg" alt="" width="44" height="44" loading="lazy" />
+                <span class="testimonial__meta">
+                  <span class="testimonial__name">Cris M.</span>
+                  <span class="testimonial__role">Google AI Essentials graduate</span>
+                </span>
+              </figcaption>
+              <img class="testimonial__divider" src="assets/divider-line.svg" alt="" width="320" height="1" />
+              <a class="testimonial__link" href="#">
+                Afficher les cours sur l'IA
+                <img src="assets/icon-chevron-right.svg" alt="" width="12" height="12" />
+              </a>
+            </div>
+          </figure>
+        </li>
+        <li class="carousel__slide" aria-roledescription="diapositive" aria-label="6 sur 6">
+          <figure class="testimonial">
+            <div class="testimonial__top">
+              <span class="testimonial__quote-mark" aria-hidden="true">“</span>
+              <blockquote class="testimonial__quote">
+                <p>Ce cours a très bien su expliquer l'IA, de son développement à ses applications. J'ai particulièrement apprécié la diversité des points de vue présentés, qui m'ont aidé à comprendre comment utiliser l'IA de manière responsable, comme un outil dans le cadre de mon métier, et non comme une simple nouveauté.</p>
+              </blockquote>
+            </div>
+            <div class="testimonial__bottom">
+              <figcaption class="testimonial__profile">
+                <img class="testimonial__avatar" src="assets/avatar.jpg" alt="" width="44" height="44" loading="lazy" />
+                <span class="testimonial__meta">
+                  <span class="testimonial__name">Cris M.</span>
+                  <span class="testimonial__role">Google AI Essentials graduate</span>
+                </span>
+              </figcaption>
+              <img class="testimonial__divider" src="assets/divider-line.svg" alt="" width="320" height="1" />
+              <a class="testimonial__link" href="#">
+                Afficher les cours sur l'IA
+                <img src="assets/icon-chevron-right.svg" alt="" width="12" height="12" />
+              </a>
+            </div>
+          </figure>
+        </li>
+      </ul>
+
+      <div class="carousel__controls">
+        <div class="carousel__dots" role="group" aria-label="Choisir une position"></div>
+        <div class="carousel__nav">
+          <button class="carousel__btn carousel__btn--prev" type="button" aria-label="Précédent">
+            <img src="assets/icon-arrow-right.svg" alt="" width="20" height="20" />
+          </button>
+          <button class="carousel__btn carousel__btn--next" type="button" aria-label="Suivant">
+            <img src="assets/icon-arrow-right.svg" alt="" width="20" height="20" />
+          </button>
+        </div>
+      </div>
+      <p class="visually-hidden" aria-live="polite" data-carousel-status></p>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      const root = document.querySelector('.section-avis');
+      const track = root.querySelector('.carousel__track');
+      const slides = [...track.children];
+      const prev = root.querySelector('.carousel__btn--prev');
+      const next = root.querySelector('.carousel__btn--next');
+      const dotsWrap = root.querySelector('.carousel__dots');
+      const status = root.querySelector('[data-carousel-status]');
+      let dots = [];
+      let current = -1;
+
+      // Distance entre deux diapositives (largeur + gap)
+      const step = () => slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth;
+      // Nombre de positions atteignables (ex. 6 avis, 3 visibles → 4 positions)
+      const positions = () => Math.max(1, Math.round((track.scrollWidth - track.clientWidth) / step()) + 1);
+
+      function buildDots() {
+        const count = positions();
+        if (dots.length === count) return;
+        dotsWrap.innerHTML = '';
+        dots = Array.from({ length: count }, (_, i) => {
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'carousel__dot';
+          dot.setAttribute('aria-label', `Aller à la position ${i + 1}`);
+          dot.addEventListener('click', () => goTo(i));
+          dotsWrap.appendChild(dot);
+          return dot;
+        });
+        dotsWrap.hidden = count < 2;
+        current = -1;
+      }
+
+      // Position lue depuis le défilement réel (ne dépend pas de la réception des événements scroll)
+      function indexFromScroll() {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        return track.scrollLeft >= maxScroll - 2 ? positions() - 1 : Math.round(track.scrollLeft / step());
+      }
+
+      function goTo(index) {
+        const max = positions() - 1;
+        track.scrollTo({ left: Math.min(Math.max(index, 0), max) * step() });
+      }
+
+      function update() {
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        const index = indexFromScroll();
+        prev.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft >= maxScroll - 2;
+        if (index === current) return;
+        current = index;
+        dots.forEach((dot, i) => dot.setAttribute('aria-current', i === index ? 'true' : 'false'));
+        status.textContent = `Position ${index + 1} sur ${dots.length}`;
+      }
+
+      prev.addEventListener('click', () => goTo(indexFromScroll() - 1));
+      next.addEventListener('click', () => goTo(indexFromScroll() + 1));
+      track.addEventListener('scroll', update, { passive: true });
+      track.addEventListener('scrollend', update);
+      window.addEventListener('resize', () => { buildDots(); update(); });
+
+      buildDots();
+      update();
+    })();
+  </script>
+</body>
+</html>

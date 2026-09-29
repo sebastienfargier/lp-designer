@@ -1,0 +1,38 @@
+{
+  "$description": "Tokens Brand OS hors couleurs de base (typographie, rayons, espacements, états des boutons, logotype). Source : https://brand-os-orcin-two.vercel.app/design-tokens. Format Design Tokens (W3C DTCG). Les couleurs de base sont dans studi-colors.json (export Brand OS).",
+  "color-state": {
+    "accent-1-hover": { "$type": "color", "$value": "#DAE46E", "$description": "Survol du CTA accent 1" },
+    "accent-1-active": { "$type": "color", "$value": "#C7D065", "$description": "Appui du CTA accent 1" },
+    "logo": { "$type": "color", "$value": "#070A0D", "$description": "Logotype monochrome : ce noir ou le blanc, rien d'autre" }
+  },
+  "font": {
+    "sans": { "$type": "fontFamily", "$value": ["Inter", "system-ui", "-apple-system", "Segoe UI", "sans-serif"] }
+  },
+  "typography": {
+    "display": { "$type": "typography", "$value": { "fontSize": "48px", "lineHeight": "56px", "fontWeight": 600 } },
+    "heading-1": { "$type": "typography", "$value": { "fontSize": "30px", "lineHeight": "38px", "fontWeight": 600 } },
+    "heading-2": { "$type": "typography", "$value": { "fontSize": "20px", "lineHeight": "28px", "fontWeight": 600 } },
+    "body": { "$type": "typography", "$value": { "fontSize": "14px", "lineHeight": "22px", "fontWeight": 400 } },
+    "caption": { "$type": "typography", "$value": { "fontSize": "12px", "lineHeight": "16px", "fontWeight": 500 } }
+  },
+  "radius": {
+    "sm": { "$type": "dimension", "$value": "6px", "$description": "Puces, éléments compacts" },
+    "md": { "$type": "dimension", "$value": "8px", "$description": "Tags, champs, menus" },
+    "lg": { "$type": "dimension", "$value": "10px", "$description": "Cartes, images, panneaux" },
+    "xl": { "$type": "dimension", "$value": "14px", "$description": "Modales" },
+    "full": { "$type": "dimension", "$value": "9999px", "$description": "Boutons, avatars, pastilles" }
+  },
+  "space": {
+    "4": { "$type": "dimension", "$value": "4px" },
+    "6": { "$type": "dimension", "$value": "6px", "$description": "Écart icône / libellé des boutons (composant Brand OS)" },
+    "8": { "$type": "dimension", "$value": "8px" },
+    "12": { "$type": "dimension", "$value": "12px" },
+    "16": { "$type": "dimension", "$value": "16px" },
+    "24": { "$type": "dimension", "$value": "24px" },
+    "32": { "$type": "dimension", "$value": "32px" },
+    "48": { "$type": "dimension", "$value": "48px" }
+  },
+  "container": {
+    "page": { "$type": "dimension", "$value": "1200px", "$description": "Largeur max. du contenu des LP" }
+  }
+}

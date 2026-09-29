@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section Trustpilot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* === Tokens Studi — générés depuis brand/studi-colors.json, ne pas modifier à la main === */
+    :root {
+      --brand-green: #0D302D;
+      --brand-green-soft: #E9F6F5;
+      --accent-1: #EDF878;
+      --accent-2: #F87363;
+      --accent-2-soft: #FFCCD1;
+      --neutral-0: #FFFFFF;
+      --neutral-50: #FAFAF9;
+      --neutral-100: #F5F5F4;
+      --neutral-200: #E7E5E4;
+      --neutral-300: #D7D3D0;
+      --neutral-400: #A9A39D;
+      --neutral-500: #79726B;
+      --neutral-600: #58544D;
+      --neutral-700: #45413B;
+      --neutral-800: #2F2A28;
+      --neutral-900: #1D1916;
+      --neutral-950: #0C0A09;
+      --orange-50: #FEF2F3;
+      --orange-100: #FFE3E6;
+      --orange-200: #FFCCD1;
+      --orange-300: #FFA8A7;
+      --orange-400: #F87363;
+      --orange-500: #F04A33;
+      --orange-600: #DC2D0D;
+      --orange-700: #B82307;
+      --orange-800: #981F0F;
+      --orange-900: #7E2016;
+      --orange-950: #450C06;
+      --success: #16A34A;
+      --warning: #F59E0B;
+      --danger: #DC2626;
+      --info: #2563EB;
+      --logo-black: #070A0D; /* logotype monochrome : noir #070A0D ou blanc (design.md) */
+
+      --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    /* === Fin des tokens Studi === */
+
+    :root {
+      /* Espacements */
+      --space-16: 16px;
+      --space-40: 40px;
+      --space-56: 56px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-sans); background: var(--brand-green); }
+
+    .section-trustpilot {
+      display: flex;
+      justify-content: center;
+      padding: 0 16px;
+      background: var(--brand-green);
+    }
+
+    .section-trustpilot__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-40);
+      width: 100%;
+      max-width: 1200px;
+      padding: var(--space-56) 0;
+    }
+
+    /* Badge Trustpilot */
+    .trustpilot {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 26px;
+      color: var(--neutral-0);
+      white-space: nowrap;
+    }
+    .trustpilot__stars { display: block; width: 106.667px; height: 20px; }
+    .trustpilot__brand { display: flex; align-items: center; justify-content: center; gap: 4px; }
+    .trustpilot__brand img { display: block; width: 14px; height: 13.25px; }
+
+    /* Texte */
+    .section-trustpilot__text {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-16);
+      width: 100%;
+      text-align: center;
+    }
+    .section-trustpilot__title {
+      margin: 0;
+      font-size: 36px;
+      font-weight: 700;
+      line-height: 44px;
+      letter-spacing: -1px;
+      color: var(--neutral-0);
+    }
+    .section-trustpilot__desc {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      color: var(--brand-green-soft);
+    }
+
+    @media (max-width: 640px) {
+      .section-trustpilot__container { gap: 32px; padding: 48px 0; }
+      .section-trustpilot__title { font-size: 28px; line-height: 36px; letter-spacing: -0.5px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="section-trustpilot">
+    <div class="section-trustpilot__container">
+      <div class="trustpilot" role="img" aria-label="Noté Excellent, 5 étoiles sur 5 sur Trustpilot">
+        <span aria-hidden="true">Excellent</span>
+        <img class="trustpilot__stars" src="assets/trustpilot-5-etoiles.svg" alt="" width="106.667" height="20" />
+        <span class="trustpilot__brand" aria-hidden="true">
+          <img src="assets/trustpilot-logo-etoile.svg" alt="" width="14" height="13.25" />
+          Trustpilot
+        </span>
+      </div>
+
+      <div class="section-trustpilot__text">
+        <h2 class="section-trustpilot__title">Lorem ipsum dolor sit amet</h2>
+        <p class="section-trustpilot__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras suscipit urna eu mollis hendrerit</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

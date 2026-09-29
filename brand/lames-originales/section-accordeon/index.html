@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section Accordéon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* === Tokens Studi — générés depuis brand/studi-colors.json, ne pas modifier à la main === */
+    :root {
+      --brand-green: #0D302D;
+      --brand-green-soft: #E9F6F5;
+      --accent-1: #EDF878;
+      --accent-2: #F87363;
+      --accent-2-soft: #FFCCD1;
+      --neutral-0: #FFFFFF;
+      --neutral-50: #FAFAF9;
+      --neutral-100: #F5F5F4;
+      --neutral-200: #E7E5E4;
+      --neutral-300: #D7D3D0;
+      --neutral-400: #A9A39D;
+      --neutral-500: #79726B;
+      --neutral-600: #58544D;
+      --neutral-700: #45413B;
+      --neutral-800: #2F2A28;
+      --neutral-900: #1D1916;
+      --neutral-950: #0C0A09;
+      --orange-50: #FEF2F3;
+      --orange-100: #FFE3E6;
+      --orange-200: #FFCCD1;
+      --orange-300: #FFA8A7;
+      --orange-400: #F87363;
+      --orange-500: #F04A33;
+      --orange-600: #DC2D0D;
+      --orange-700: #B82307;
+      --orange-800: #981F0F;
+      --orange-900: #7E2016;
+      --orange-950: #450C06;
+      --success: #16A34A;
+      --warning: #F59E0B;
+      --danger: #DC2626;
+      --info: #2563EB;
+      --logo-black: #070A0D; /* logotype monochrome : noir #070A0D ou blanc (design.md) */
+
+      --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+    }
+    /* === Fin des tokens Studi === */
+
+    :root {
+      /* Espacements */
+      --space-16: 16px;
+      --space-32: 32px;
+      --space-80: 80px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-sans); background: var(--neutral-50); }
+
+    .section-accordeon {
+      display: flex;
+      justify-content: center;
+      padding: 0 16px;
+      background: var(--neutral-50);
+    }
+
+    .section-accordeon__container {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+      width: 100%;
+      max-width: 1200px;
+      padding: var(--space-80) 0;
+    }
+
+    /* Colonne gauche */
+    .section-accordeon__left {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-32);
+      flex: 1 0 0;
+      min-width: 0;
+    }
+
+    .section-accordeon__header { display: flex; flex-direction: column; gap: var(--space-16); }
+    .section-accordeon__title {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 32px;
+      color: var(--neutral-900);
+    }
+    .section-accordeon__desc {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 24px;
+      color: var(--neutral-600);
+    }
+
+    /* Accordéon */
+    .accordion { display: flex; flex-direction: column; }
+
+    .acc-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      border: 1px solid transparent;
+      border-bottom-color: var(--neutral-200);
+      border-radius: 0;
+      transition: background-color .2s ease;
+    }
+    .acc-item.is-active {
+      gap: 8px;
+      background: var(--neutral-0);
+      border-color: var(--neutral-200);
+      border-radius: 12px;
+    }
+    .acc-item:not(.is-active):hover { background: var(--neutral-100); }
+
+    .acc-item__heading { margin: 0; }
+    .acc-item__trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 0;
+      background: none;
+      border: 0;
+      font: inherit;
+      font-size: 16px;
+      font-weight: 600;
+      line-height: normal;
+      color: var(--neutral-900);
+      text-align: left;
+      cursor: pointer;
+    }
+    /* Toute la carte est cliquable */
+    .acc-item__trigger::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+    .acc-item__trigger:focus-visible { outline: none; }
+    .acc-item:has(.acc-item__trigger:focus-visible) { outline: 2px solid var(--brand-green); outline-offset: 2px; border-radius: 12px; }
+
+    .acc-item__chevron { display: block; flex-shrink: 0; width: 20px; height: 20px; }
+    .acc-item__chevron--up { display: none; }
+    .acc-item.is-active .acc-item__chevron--up { display: block; }
+    .acc-item.is-active .acc-item__chevron--down { display: none; }
+
+    .acc-item__text {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: normal;
+      color: var(--neutral-500);
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .acc-item.is-active .acc-item__text {
+      color: var(--neutral-600);
+      display: block;
+    }
+
+    /* Colonne droite : emplacement image (fond gris + pictogramme) et visuels superposés */
+    .visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1 0 0;
+      min-width: 0;
+      height: 560px;
+      overflow: hidden;
+      background: var(--neutral-200);
+      border-radius: 24px;
+    }
+    .visual__placeholder { display: block; width: 80px; height: 80px; }
+
+    .visual__panel {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .4s ease, visibility 0s linear .4s;
+    }
+    .visual__panel.is-active {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity .4s ease, visibility 0s;
+    }
+    .visual__panel img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @media (max-width: 900px) {
+      .section-accordeon__container { flex-direction: column; align-items: stretch; gap: 40px; padding: 56px 0; }
+      .visual { flex: none; height: auto; aspect-ratio: 4 / 3; border-radius: 16px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .acc-item, .visual__panel, .visual__panel.is-active { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <section class="section-accordeon">
+    <div class="section-accordeon__container">
+      <div class="section-accordeon__left">
+        <div class="section-accordeon__header">
+          <h2 class="section-accordeon__title">Short heading goes here</h2>
+          <p class="section-accordeon__desc">A description that gives users more context about the section and what it's about. Keep it concise but informative.</p>
+        </div>
+
+        <div class="accordion">
+          <div class="acc-item is-active">
+            <h3 class="acc-item__heading">
+              <button class="acc-item__trigger" type="button" id="acc-trigger-1" aria-expanded="true" aria-controls="acc-text-1 visual-1">
+                Heading 1
+                <img class="acc-item__chevron acc-item__chevron--up" src="assets/icon-chevron-up.svg" alt="" width="20" height="20" />
+                <img class="acc-item__chevron acc-item__chevron--down" src="assets/icon-chevron-down.svg" alt="" width="20" height="20" />
+              </button>
+            </h3>
+            <p class="acc-item__text" id="acc-text-1">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros. Fully customisable components for all styles.</p>
+          </div>
+
+          <div class="acc-item">
+            <h3 class="acc-item__heading">
+              <button class="acc-item__trigger" type="button" id="acc-trigger-2" aria-expanded="false" aria-controls="acc-text-2 visual-2">
+                Heading 2
+                <img class="acc-item__chevron acc-item__chevron--up" src="assets/icon-chevron-up.svg" alt="" width="20" height="20" />
+                <img class="acc-item__chevron acc-item__chevron--down" src="assets/icon-chevron-down.svg" alt="" width="20" height="20" />
+              </button>
+            </h3>
+            <p class="acc-item__text" id="acc-text-2">Fully customisable components for all styles.</p>
+          </div>
+
+          <div class="acc-item">
+            <h3 class="acc-item__heading">
+              <button class="acc-item__trigger" type="button" id="acc-trigger-3" aria-expanded="false" aria-controls="acc-text-3 visual-3">
+                Heading 3
+                <img class="acc-item__chevron acc-item__chevron--up" src="assets/icon-chevron-up.svg" alt="" width="20" height="20" />
+                <img class="acc-item__chevron acc-item__chevron--down" src="assets/icon-chevron-down.svg" alt="" width="20" height="20" />
+              </button>
+            </h3>
+            <p class="acc-item__text" id="acc-text-3">Fully customisable components for all styles.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="visual">
+        <img class="visual__placeholder" src="assets/icon-image-placeholder.svg" alt="" width="80" height="80" />
+        <!-- Un visuel par élément ; retirer un <img> fait réapparaître l'emplacement gris -->
+        <div class="visual__panel is-active" id="visual-1" role="region" aria-labelledby="acc-trigger-1">
+          <img src="assets/visuel-1.jpg" alt="Un homme souriant travaille sur son ordinateur portable" />
+        </div>
+        <div class="visual__panel" id="visual-2" role="region" aria-labelledby="acc-trigger-2" aria-hidden="true">
+          <img src="assets/visuel-2.png" alt="Une famille joue aux cubes dans le salon" />
+        </div>
+        <div class="visual__panel" id="visual-3" role="region" aria-labelledby="acc-trigger-3" aria-hidden="true">
+          <img src="assets/visuel-3.jpg" alt="Une jeune femme assise sur un canapé" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      const items = [...document.querySelectorAll('.section-accordeon .acc-item')];
+      const panels = [...document.querySelectorAll('.section-accordeon .visual__panel')];
+
+      // Un seul élément ouvert à la fois ; il pilote le visuel affiché à droite
+      function select(index) {
+        items.forEach((item, i) => {
+          const active = i === index;
+          item.classList.toggle('is-active', active);
+          item.querySelector('.acc-item__trigger').setAttribute('aria-expanded', active);
+          if (panels[i]) {
+            panels[i].classList.toggle('is-active', active);
+            panels[i].setAttribute('aria-hidden', !active);
+          }
+        });
+      }
+
+      items.forEach((item, i) => {
+        item.querySelector('.acc-item__trigger').addEventListener('click', () => select(i));
+      });
+    })();
+  </script>
+</body>
+</html>

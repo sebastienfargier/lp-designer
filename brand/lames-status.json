@@ -1,0 +1,92 @@
+{
+  "bandeau-confirmation": {
+    "status": "validee",
+    "category": "structure",
+    "updatedAt": "2026-09-28T09:27:29.364Z"
+  },
+  "conditions": {
+    "status": "validee",
+    "category": "conversion",
+    "updatedAt": "2026-09-28T09:27:04.358Z"
+  },
+  "footnotes": {
+    "status": "validee",
+    "category": "structure",
+    "updatedAt": "2026-09-28T09:27:33.251Z"
+  },
+  "hero-photo": {
+    "status": "validee",
+    "category": "hero",
+    "updatedAt": "2026-09-28T09:06:07.060Z"
+  },
+  "image-text": {
+    "status": "validee",
+    "category": "contenu",
+    "updatedAt": "2026-09-28T09:26:48.843Z"
+  },
+  "ref-accordeon": {
+    "status": "validee",
+    "category": "contenu",
+    "updatedAt": "2026-09-28T09:26:22.527Z"
+  },
+  "ref-avantages": {
+    "status": "validee",
+    "category": "reassurance",
+    "updatedAt": "2026-09-28T09:25:59.617Z"
+  },
+  "ref-avis": {
+    "status": "validee",
+    "category": "preuve-sociale",
+    "updatedAt": "2026-09-28T09:27:11.729Z"
+  },
+  "ref-cards": {
+    "status": "validee",
+    "category": "conversion",
+    "updatedAt": "2026-09-28T09:26:56.563Z"
+  },
+  "ref-carousel": {
+    "status": "validee",
+    "category": "contenu",
+    "updatedAt": "2026-09-28T09:26:29.340Z"
+  },
+  "ref-hero-campagne": {
+    "status": "validee",
+    "category": "hero",
+    "updatedAt": "2026-09-28T09:05:58.620Z"
+  },
+  "ref-hero-lifestyle": {
+    "status": "validee",
+    "category": "hero",
+    "updatedAt": "2026-09-28T09:06:01.768Z"
+  },
+  "ref-hero-produit": {
+    "status": "validee",
+    "category": "hero",
+    "updatedAt": "2026-09-28T09:05:51.202Z"
+  },
+  "ref-image-texte": {
+    "status": "validee",
+    "category": "contenu",
+    "updatedAt": "2026-09-28T09:26:07.135Z"
+  },
+  "ref-profils": {
+    "status": "validee",
+    "category": "contenu",
+    "updatedAt": "2026-09-28T09:26:16.190Z"
+  },
+  "review-band": {
+    "status": "validee",
+    "category": "preuve-sociale",
+    "updatedAt": "2026-09-28T09:27:22.299Z"
+  },
+  "site-footer": {
+    "status": "validee",
+    "category": "structure",
+    "updatedAt": "2026-09-28T09:27:36.670Z"
+  },
+  "tabs-section": {
+    "status": "validee",
+    "category": "contenu",
+    "updatedAt": "2026-09-28T09:26:41.832Z"
+  }
+}

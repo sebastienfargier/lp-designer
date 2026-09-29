@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section Profils</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    /* === Tokens Studi — Généré par scripts/build-tokens.mjs depuis brand/studi-colors.json et brand/studi-tokens.json — ne pas modifier à la main (npm run tokens). === */
+    :root {
+      --brand-green:                    #0D302D;
+      --brand-green-soft:               #E9F6F5;
+      --accent-1:                       #EDF878;
+      --accent-2:                       #F87363;
+      --accent-2-soft:                  #FFCCD1;
+      --neutral-0:                      #FFFFFF;
+      --neutral-50:                     #FAFAF9;
+      --neutral-100:                    #F5F5F4;
+      --neutral-200:                    #E7E5E4;
+      --neutral-300:                    #D7D3D0;
+      --neutral-400:                    #A9A39D;
+      --neutral-500:                    #79726B;
+      --neutral-600:                    #58544D;
+      --neutral-700:                    #45413B;
+      --neutral-800:                    #2F2A28;
+      --neutral-900:                    #1D1916;
+      --neutral-950:                    #0C0A09;
+      --orange-50:                      #FEF2F3;
+      --orange-100:                     #FFE3E6;
+      --orange-200:                     #FFCCD1;
+      --orange-300:                     #FFA8A7;
+      --orange-400:                     #F87363;
+      --orange-500:                     #F04A33;
+      --orange-600:                     #DC2D0D;
+      --orange-700:                     #B82307;
+      --orange-800:                     #981F0F;
+      --orange-900:                     #7E2016;
+      --orange-950:                     #450C06;
+      --success:                        #16A34A;
+      --warning:                        #F59E0B;
+      --danger:                         #DC2626;
+      --info:                           #2563EB;
+      --accent-1-hover:                 #DAE46E;
+      --accent-1-active:                #C7D065;
+      --logo:                           #070A0D;
+      --logo-black: var(--logo); /* alias historique des maquettes */
+
+      --font-sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+      /* Espacements (échelle 4px) */
+      --space-4:                        4px;
+      --space-6:                        6px;
+      --space-8:                        8px;
+      --space-12:                       12px;
+      --space-16:                       16px;
+      --space-24:                       24px;
+      --space-32:                       32px;
+      --space-48:                       48px;
+
+      /* Rayons */
+      --radius-sm:                      6px;
+      --radius-md:                      8px;
+      --radius-lg:                      10px;
+      --radius-xl:                      14px;
+      --radius-full:                    9999px;
+    }
+    /* === Fin des tokens Studi === */
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-sans); background: var(--neutral-50); }
+
+    .section-profils {
+      display: flex;
+      justify-content: center;
+      padding: 0 16px;
+      background: var(--neutral-50);
+    }
+
+    .section-profils__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-48);
+      width: 100%;
+      max-width: 1200px;
+      padding: var(--space-48) 0;
+    }
+
+    /* Onglets */
+    .tabs {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-32);
+      width: 100%;
+    }
+
+    .tab {
+      position: relative;
+      display: flex;
+      min-width: 0;
+      padding: 0 var(--space-32);
+      background: none;
+      border: 0;
+      font: inherit;
+      text-align: left;
+      color: inherit;
+      cursor: pointer;
+    }
+    .tab:first-child { padding-left: 0; }
+
+    .tab__body {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      width: 100%;
+    }
+
+    /* Indicateur de sélection : trait au-dessus du texte */
+    .tab__body::before {
+      content: "";
+      position: absolute;
+      top: -16px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      border-radius: 3px;
+      background: var(--neutral-200);
+    }
+    .tab__body::after {
+      content: "";
+      position: absolute;
+      top: -16px;
+      left: 0;
+      right: 0;
+      height: 3px;
+      border-radius: 3px;
+      background: var(--brand-green);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s ease;
+    }
+
+    .tab[aria-selected="true"] .tab__body::after { transform: scaleX(1); }
+    .tab:focus-visible { outline: none; }
+    .tab:focus-visible .tab__body::before { box-shadow: 0 0 0 2px var(--neutral-50), 0 0 0 4px var(--brand-green); }
+
+    /* Onglet inactif en texte tertiaire, survol en secondaire, actif à l'encre (palette fermée : pas d'opacité) */
+    .tab__label,
+    .tab__title,
+    .tab__text { color: var(--neutral-500); transition: color .25s ease; }
+    .tab:hover .tab__label,
+    .tab:hover .tab__title,
+    .tab:hover .tab__text { color: var(--neutral-600); }
+    .tab[aria-selected="true"] .tab__label,
+    .tab[aria-selected="true"] .tab__title { color: var(--neutral-900); }
+    .tab[aria-selected="true"] .tab__text { color: var(--neutral-700); }
+
+    .tab__label {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+    }
+    .tab__title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 28px;
+    }
+    .tab__text {
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+    }
+
+    /* Visuels */
+    .panels {
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      aspect-ratio: 1000 / 640;
+      overflow: hidden;
+      border-radius: var(--radius-lg);
+    }
+    .panel {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity .4s ease, visibility 0s linear .4s;
+    }
+    .panel.is-active {
+      opacity: 1;
+      visibility: visible;
+      transition: opacity .4s ease, visibility 0s;
+    }
+    .panel img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+    }
+
+    @media (max-width: 900px) {
+      .section-profils__container { gap: var(--space-32); padding: var(--space-32) 0; }
+      .tabs { gap: var(--space-16); }
+      .tab, .tab:first-child { padding: 0; }
+      .tab__text { display: none; }
+    }
+
+    @media (max-width: 560px) {
+      .tabs { grid-template-columns: minmax(0, 1fr); gap: 0; }
+      .tab, .tab:first-child { padding: var(--space-12) 0 var(--space-12) var(--space-16); }
+      .tab__body { gap: 4px; }
+      /* Indicateur vertical à gauche */
+      .tab__body::before,
+      .tab__body::after { top: 0; bottom: 0; left: -16px; right: auto; width: 3px; height: auto; }
+      .tab__body::after { transform: scaleY(0); transform-origin: top; }
+      .tab[aria-selected="true"] .tab__body::after { transform: scaleY(1); }
+      .tab__text { display: block; }
+      .tab:not([aria-selected="true"]) .tab__text { display: none; }
+      .panels { aspect-ratio: 4 / 3; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .panel, .panel.is-active, .tab__body, .tab__body::after { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <section class="section-profils" aria-label="Votre profil">
+    <div class="section-profils__container">
+      <div class="tabs" role="tablist" aria-label="Choisissez votre profil">
+        <button class="tab" type="button" role="tab" id="tab-en-poste" aria-controls="panel-en-poste" aria-selected="true">
+          <span class="tab__body">
+            <span class="tab__label">En poste</span>
+            <span class="tab__title">Lorem ipsum dolor</span>
+            <span class="tab__text">Fast, focused lessons that fit into your life and create career impact.</span>
+          </span>
+        </button>
+        <button class="tab" type="button" role="tab" id="tab-etudiant" aria-controls="panel-etudiant" aria-selected="false" tabindex="-1">
+          <span class="tab__body">
+            <span class="tab__label">Étudiant</span>
+            <span class="tab__title">Lorem ipsum dolor</span>
+            <span class="tab__text">Learn strategies, frameworks, and more from industry leaders.</span>
+          </span>
+        </button>
+        <button class="tab" type="button" role="tab" id="tab-demandeur" aria-controls="panel-demandeur" aria-selected="false" tabindex="-1">
+          <span class="tab__body">
+            <span class="tab__label">Demandeur d’emploi</span>
+            <span class="tab__title">Lorem ipsum dolor</span>
+            <span class="tab__text">Gain high-impact skills you can apply now. No prereqs required.</span>
+          </span>
+        </button>
+      </div>
+
+      <div class="panels">
+        <div class="panel is-active" role="tabpanel" id="panel-en-poste" aria-labelledby="tab-en-poste">
+          <img src="assets/profil-en-poste.jpg" alt="Un homme souriant travaille sur son ordinateur portable chez lui" />
+        </div>
+        <div class="panel" role="tabpanel" id="panel-etudiant" aria-labelledby="tab-etudiant" hidden>
+          <img src="assets/profil-etudiant.jpg" alt="Une jeune femme assise sur un canapé" />
+        </div>
+        <div class="panel" role="tabpanel" id="panel-demandeur" aria-labelledby="tab-demandeur" hidden>
+          <img src="assets/profil-demandeur-emploi.jpg" alt="Une femme souriante devant son ordinateur" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    (function () {
+      const tabs = [...document.querySelectorAll('.section-profils [role="tab"]')];
+      const panels = tabs.map(tab => document.getElementById(tab.getAttribute('aria-controls')));
+
+      // Les panneaux sont masqués par `hidden` sans JS ; avec JS, le fondu CSS prend le relais
+      panels.forEach(panel => panel.removeAttribute('hidden'));
+
+      function select(index, focus) {
+        tabs.forEach((tab, i) => {
+          const active = i === index;
+          tab.setAttribute('aria-selected', active);
+          tab.tabIndex = active ? 0 : -1;
+          panels[i].classList.toggle('is-active', active);
+          panels[i].setAttribute('aria-hidden', !active);
+        });
+        if (focus) tabs[index].focus();
+      }
+
+      tabs.forEach((tab, i) => {
+        tab.addEventListener('click', () => select(i));
+        tab.addEventListener('keydown', e => {
+          const last = tabs.length - 1;
+          const map = { ArrowRight: i + 1, ArrowDown: i + 1, ArrowLeft: i - 1, ArrowUp: i - 1, Home: 0, End: last };
+          if (!(e.key in map)) return;
+          e.preventDefault();
+          select((map[e.key] + tabs.length) % tabs.length, true);
+        });
+      });
+
+      select(0);
+    })();
+  </script>
+</body>
+</html>

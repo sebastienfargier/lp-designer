@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section Produit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* === Tokens Studi — Généré par scripts/build-tokens.mjs depuis brand/studi-colors.json et brand/studi-tokens.json — ne pas modifier à la main (npm run tokens). === */
+    :root {
+      --brand-green:                    #0D302D;
+      --brand-green-soft:               #E9F6F5;
+      --accent-1:                       #EDF878;
+      --accent-2:                       #F87363;
+      --accent-2-soft:                  #FFCCD1;
+      --neutral-0:                      #FFFFFF;
+      --neutral-50:                     #FAFAF9;
+      --neutral-100:                    #F5F5F4;
+      --neutral-200:                    #E7E5E4;
+      --neutral-300:                    #D7D3D0;
+      --neutral-400:                    #A9A39D;
+      --neutral-500:                    #79726B;
+      --neutral-600:                    #58544D;
+      --neutral-700:                    #45413B;
+      --neutral-800:                    #2F2A28;
+      --neutral-900:                    #1D1916;
+      --neutral-950:                    #0C0A09;
+      --orange-50:                      #FEF2F3;
+      --orange-100:                     #FFE3E6;
+      --orange-200:                     #FFCCD1;
+      --orange-300:                     #FFA8A7;
+      --orange-400:                     #F87363;
+      --orange-500:                     #F04A33;
+      --orange-600:                     #DC2D0D;
+      --orange-700:                     #B82307;
+      --orange-800:                     #981F0F;
+      --orange-900:                     #7E2016;
+      --orange-950:                     #450C06;
+      --success:                        #16A34A;
+      --warning:                        #F59E0B;
+      --danger:                         #DC2626;
+      --info:                           #2563EB;
+      --accent-1-hover:                 #DAE46E;
+      --accent-1-active:                #C7D065;
+      --logo:                           #070A0D;
+      --logo-black: var(--logo); /* alias historique des maquettes */
+
+      --font-sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+      /* Espacements (échelle 4px) */
+      --space-4:                        4px;
+      --space-6:                        6px;
+      --space-8:                        8px;
+      --space-12:                       12px;
+      --space-16:                       16px;
+      --space-24:                       24px;
+      --space-32:                       32px;
+      --space-48:                       48px;
+
+      /* Rayons */
+      --radius-sm:                      6px;
+      --radius-md:                      8px;
+      --radius-lg:                      10px;
+      --radius-xl:                      14px;
+      --radius-full:                    9999px;
+    }
+    /* === Fin des tokens Studi === */
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-sans); background: var(--neutral-50); }
+
+    .section-produit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background: var(--neutral-50);
+    }
+
+    /* Menu */
+    .menu {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      padding: var(--space-24) 16px;
+      background: var(--neutral-0);
+    }
+    .menu__inner {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1200px;
+    }
+    .menu__left { display: flex; align-items: center; gap: var(--space-48); }
+    .menu__logo { display: flex; align-items: center; }
+    .menu__logo img { display: block; width: 84px; height: 29.19px; }
+
+    .menu__links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-24);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 14px;
+      line-height: 22px;
+    }
+    .menu__links a {
+      color: var(--neutral-900);
+      font-weight: 400;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .menu__links a[aria-current="page"] { color: var(--brand-green); }
+    .menu__links a:hover { color: var(--brand-green); }
+
+    .menu__right { display: flex; align-items: center; gap: 16px; }
+    .menu__phone {
+      color: var(--neutral-500);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .menu__phone:hover { color: var(--brand-green); }
+    .menu__cta {
+      display: inline-flex;
+      align-items: center;
+      height: 36px;
+      padding: 0 var(--space-16);
+      background: var(--neutral-0);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-full);
+      color: var(--neutral-900);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background-color .15s ease, color .15s ease;
+    }
+    .menu__cta:hover { background: var(--neutral-100); }
+    .menu__cta:active { background: var(--neutral-200); }
+
+    /* Contenu */
+    .produit {
+      width: 100%;
+      max-width: 1232px;
+      padding: var(--space-48) 16px var(--space-48);
+    }
+    .produit__row {
+      display: flex;
+      align-items: center;
+      gap: var(--space-48);
+      min-height: 500px;
+    }
+
+    .produit__left {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      width: 630px;
+      max-width: 100%;
+      flex-shrink: 0;
+    }
+    .produit__text { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-16); }
+
+    .badges { display: flex; flex-wrap: wrap; gap: var(--space-8); }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-4);
+      padding: var(--space-4) var(--space-8);
+      border-radius: var(--radius-md);
+      color: var(--neutral-900);
+font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+      white-space: nowrap;
+    }
+    .badge--yellow { background: var(--accent-1); }
+    .badge--green { background: var(--brand-green-soft); color: var(--brand-green); }
+
+    .produit__title {
+      margin: 0;
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 56px;
+      color: var(--neutral-900);
+    }
+    .produit__desc {
+      margin: 0;
+font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      color: var(--neutral-600);
+    }
+
+    /* Carte prix */
+    .pricing {
+      display: flex;
+      align-items: center;
+      gap: var(--space-24);
+      width: 100%;
+      padding: var(--space-16);
+      background: var(--neutral-0);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-lg);
+      line-height: normal;
+    }
+    .pricing__core { display: flex; flex-direction: column; gap: 4px; white-space: nowrap; }
+    .pricing__original { display: flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 500; line-height: 16px; }
+    .pricing__discount { color: var(--brand-green); }
+    .pricing__old { color: var(--neutral-600); text-decoration: line-through; }
+    .pricing__current { display: flex; align-items: baseline; gap: 4px; }
+    .pricing__price { font-size: 30px; font-weight: 600; line-height: 38px; color: var(--neutral-900); }
+    .pricing__monthly { font-size: 14px; line-height: 22px; color: var(--neutral-600); }
+
+    .pricing__divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 0;
+      height: 56px;
+      flex-shrink: 0;
+    }
+    .pricing__divider img { display: block; flex: none; width: 56px; height: 1px; transform: rotate(90deg); }
+
+    .pricing__cpf { display: flex; flex-direction: column; gap: 4px; flex: 1 0 0; min-width: 1px; }
+    .pricing__cpf-title { margin: 0; font-size: 14px; line-height: 22px; color: var(--neutral-900); }
+    .pricing__cpf-text { margin: 0; font-size: 12px; font-weight: 500; line-height: 16px; color: var(--neutral-600); }
+
+    /* Boutons */
+    .produit__actions { display: flex; flex-wrap: wrap; gap: var(--space-16); }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-6);
+      height: 36px;
+      padding: 0 var(--space-16);
+      border: 1px solid transparent;
+      border-radius: var(--radius-full);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background-color .15s ease, transform .15s ease;
+    }
+    .cta:active { transform: translateY(1px); }
+    .cta img { display: block; width: 14.406px; height: 11.023px; }
+    .cta--primary { background: var(--neutral-900); color: var(--neutral-0); }
+    .cta--primary:hover { background: var(--neutral-800); }
+    .cta--primary:active { background: var(--neutral-950); }
+    .cta--secondary { background: var(--neutral-0); border-color: var(--neutral-200); color: var(--neutral-900); }
+    .cta--secondary:hover { background: var(--neutral-100); }
+    .cta--secondary:active { background: var(--neutral-200); }
+    .section-produit a:focus-visible { outline: 2px solid var(--brand-green); outline-offset: 3px; }
+
+    .partnership { display: flex; align-items: center; gap: 16px; }
+    .partnership p { margin: 0; font-size: 12px; font-weight: 500; line-height: 16px; color: var(--neutral-600); }
+    .partnership img { display: block; width: 89.851px; height: 24.381px; }
+
+    /* Visuel */
+    .produit__visual {
+      position: relative;
+      width: 514px;
+      height: 500px;
+      flex-shrink: 0;
+    }
+    .produit__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 471px;
+      height: 500px;
+      object-fit: cover;
+      object-position: 46.2% 0;
+      border-radius: var(--radius-lg);
+    }
+
+    .outcomes {
+      position: absolute;
+      top: 236px;
+      left: 174px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 340px;
+      padding: var(--space-16);
+      background: var(--neutral-0);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-lg);
+    }
+    .outcomes__header { display: flex; align-items: center; gap: 8px; }
+    .outcomes__check {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 20px;
+      height: 20px;
+      background: var(--brand-green-soft);
+      border-radius: 10px;
+    }
+    .outcomes__check img { display: block; width: 10px; height: 10px; }
+    .outcomes__title { margin: 0; font-size: 20px; font-weight: 600; line-height: 28px; color: var(--brand-green); }
+    .outcomes__list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .outcomes__list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      color: var(--neutral-900);
+    }
+    .outcomes__list li::before {
+      content: "•";
+      font-size: 12px;
+      font-weight: 400;
+      color: var(--neutral-400);
+    }
+
+    /* Responsive */
+    @media (max-width: 1230px) {
+      .produit__left { width: auto; flex: 1 1 0; min-width: 0; }
+    }
+
+    @media (max-width: 1024px) {
+      .menu__links, .menu__phone { display: none; }
+      .produit__row { flex-direction: column; align-items: stretch; gap: var(--space-48); }
+      .produit__visual { width: 100%; max-width: 514px; height: auto; margin: 0 auto; }
+      .produit__image { position: static; width: 100%; max-width: 471px; height: auto; aspect-ratio: 471 / 500; }
+      .outcomes { position: relative; top: auto; left: auto; width: min(340px, 100%); margin: -120px 0 0 auto; }
+    }
+
+    @media (max-width: 640px) {
+      .produit { padding: 32px 16px; }
+      .produit__title { font-size: 30px; line-height: 38px; }
+      .pricing { flex-wrap: wrap; gap: 16px; }
+      .pricing__divider { display: none; }
+      .pricing__cpf { flex-basis: 100%; }
+      .produit__actions .cta { width: 100%; justify-content: center; white-space: normal; }
+      .partnership { flex-wrap: wrap; gap: 8px 16px; }
+      .outcomes { margin-top: -80px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="section-produit">
+    <header class="menu">
+      <div class="menu__inner">
+        <div class="menu__left">
+          <a class="menu__logo" href="#">
+            <img src="assets/studi-logo.svg" alt="Studi" width="84" height="29.19" />
+          </a>
+          <nav aria-label="Navigation principale">
+            <ul class="menu__links">
+              <li><a href="#">Formations</a></li>
+              <li><a href="#" aria-current="page">MBA</a></li>
+              <li><a href="#">Financement</a></li>
+              <li><a href="#">À propos</a></li>
+            </ul>
+          </nav>
+        </div>
+        <div class="menu__right">
+          <a class="menu__phone" href="tel:+33174181657">Des questions ? 01 74 18 16 57</a>
+          <a class="menu__cta" href="#">Brochure gratuite</a>
+        </div>
+      </div>
+    </header>
+
+    <div class="produit">
+      <div class="produit__row">
+        <div class="produit__left">
+          <div class="produit__text">
+            <div class="badges">
+              <span class="badge badge--yellow">Populaire</span>
+              <span class="badge badge--green">100% En ligne · Titre RNCP de Niveau 7</span>
+            </div>
+
+            <h1 class="produit__title">MBA Manager Stratégique RH</h1>
+
+            <p class="produit__desc">Devenez un expert hautement qualifié de la transformation des ressources humaines. Un cursus d'excellence flexible pour concilier formation et activité professionnelle.</p>
+
+            <div class="pricing">
+              <div class="pricing__core">
+                <div class="pricing__original">
+                  <span class="pricing__discount">-20%</span>
+                  <s class="pricing__old">1 250 €</s>
+                </div>
+                <div class="pricing__current">
+                  <span class="pricing__price">990 €</span>
+                  <span class="pricing__monthly">ou 82,50 €/mois</span>
+                </div>
+              </div>
+              <div class="pricing__divider" aria-hidden="true">
+                <img src="assets/divider-line.svg" alt="" width="56" height="1" />
+              </div>
+              <div class="pricing__cpf">
+                <p class="pricing__cpf-title">Éligible MonCompteFormation</p>
+                <p class="pricing__cpf-text">Reste à charge possible de 0 € selon vos droits CPF cumulés.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="produit__actions">
+            <a class="cta cta--primary" href="#">
+              Télécharger la documentation
+              <img src="assets/icon-arrow-white.svg" alt="" width="14.406" height="11.023" />
+            </a>
+            <a class="cta cta--secondary" href="#">
+              Parler à un conseiller
+              <img src="assets/icon-arrow-dark.svg" alt="" width="14.406" height="11.023" />
+            </a>
+          </div>
+
+          <div class="partnership">
+            <p>En partenariat académique de prestige avec :</p>
+            <img src="assets/esg-rh-logo.svg" alt="ESG RH" width="89.851" height="24.381" />
+          </div>
+        </div>
+
+        <div class="produit__visual">
+          <img class="produit__image" src="assets/image-portrait.jpg" alt="Portrait d'une apprenante assise sur un canapé" />
+
+          <div class="outcomes">
+            <div class="outcomes__header">
+              <span class="outcomes__check" aria-hidden="true">
+                <img src="assets/icon-check.svg" alt="" width="10" height="10" />
+              </span>
+              <p class="outcomes__title">Débouchés professionnels</p>
+            </div>
+            <ul class="outcomes__list">
+              <li>Consultant en stratégie d’entreprise</li>
+              <li>Chargé de mission stratégique</li>
+              <li>Chef de projet développement produit</li>
+              <li>Consultant RH auto-entrepreneur</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

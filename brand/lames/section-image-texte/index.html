@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section Image Texte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* === Tokens Studi — Généré par scripts/build-tokens.mjs depuis brand/studi-colors.json et brand/studi-tokens.json — ne pas modifier à la main (npm run tokens). === */
+    :root {
+      --brand-green:                    #0D302D;
+      --brand-green-soft:               #E9F6F5;
+      --accent-1:                       #EDF878;
+      --accent-2:                       #F87363;
+      --accent-2-soft:                  #FFCCD1;
+      --neutral-0:                      #FFFFFF;
+      --neutral-50:                     #FAFAF9;
+      --neutral-100:                    #F5F5F4;
+      --neutral-200:                    #E7E5E4;
+      --neutral-300:                    #D7D3D0;
+      --neutral-400:                    #A9A39D;
+      --neutral-500:                    #79726B;
+      --neutral-600:                    #58544D;
+      --neutral-700:                    #45413B;
+      --neutral-800:                    #2F2A28;
+      --neutral-900:                    #1D1916;
+      --neutral-950:                    #0C0A09;
+      --orange-50:                      #FEF2F3;
+      --orange-100:                     #FFE3E6;
+      --orange-200:                     #FFCCD1;
+      --orange-300:                     #FFA8A7;
+      --orange-400:                     #F87363;
+      --orange-500:                     #F04A33;
+      --orange-600:                     #DC2D0D;
+      --orange-700:                     #B82307;
+      --orange-800:                     #981F0F;
+      --orange-900:                     #7E2016;
+      --orange-950:                     #450C06;
+      --success:                        #16A34A;
+      --warning:                        #F59E0B;
+      --danger:                         #DC2626;
+      --info:                           #2563EB;
+      --accent-1-hover:                 #DAE46E;
+      --accent-1-active:                #C7D065;
+      --logo:                           #070A0D;
+      --logo-black: var(--logo); /* alias historique des maquettes */
+
+      --font-sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+      /* Espacements (échelle 4px) */
+      --space-4:                        4px;
+      --space-6:                        6px;
+      --space-8:                        8px;
+      --space-12:                       12px;
+      --space-16:                       16px;
+      --space-24:                       24px;
+      --space-32:                       32px;
+      --space-48:                       48px;
+
+      /* Rayons */
+      --radius-sm:                      6px;
+      --radius-md:                      8px;
+      --radius-lg:                      10px;
+      --radius-xl:                      14px;
+      --radius-full:                    9999px;
+    }
+    /* === Fin des tokens Studi === */
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-sans); background: var(--neutral-50); }
+
+    .section-image-texte {
+      display: flex;
+      justify-content: center;
+      padding: 0 16px;
+      background: var(--neutral-50);
+    }
+
+    .section-image-texte__container {
+      width: 100%;
+      max-width: 1200px;
+      padding: var(--space-48) 0;
+    }
+
+    .media-card {
+      display: flex;
+      align-items: stretch;
+      gap: var(--space-48);
+      overflow: hidden;
+      background: var(--neutral-0);
+      border: 1px solid var(--neutral-200);
+      border-radius: var(--radius-lg);
+    }
+
+    /* Emplacement image : placeholder gris dans la maquette.
+       Déposer un <img> dedans pour le remplir. */
+    .media-card__image {
+      position: relative;
+      flex: 1 0 0;
+      min-width: 1px;
+      overflow: hidden;
+      background: var(--neutral-800);
+      border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+    }
+    .media-card__image img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .media-card__content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: var(--space-32);
+      width: 640px;
+      flex-shrink: 0;
+      padding: var(--space-48) var(--space-48) var(--space-48) 0;
+    }
+
+    .media-card__text { display: flex; flex-direction: column; gap: var(--space-32); }
+
+    .media-card__title {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 600;
+      line-height: 38px;
+      color: var(--neutral-900);
+    }
+    .media-card__title span { display: block; color: var(--brand-green); }
+
+    .media-card__desc {
+      margin: 0;
+font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      color: var(--neutral-600);
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-6);
+      height: 36px;
+      padding: 0 var(--space-16);
+      background: var(--neutral-900);
+      border-radius: var(--radius-full);
+      color: var(--neutral-0);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background-color .15s ease, transform .15s ease;
+    }
+    .cta:hover { background: var(--neutral-800); }
+    .cta:active { background: var(--neutral-950); }
+    .cta:active { transform: translateY(1px); }
+    .cta:focus-visible { outline: 2px solid var(--neutral-900); outline-offset: 3px; }
+    .cta img { display: block; width: 14.406px; height: 11.023px; }
+
+    @media (max-width: 1100px) {
+      .media-card__content { width: auto; flex: 1 1 0; min-width: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .section-image-texte { padding: 0 16px; }
+      .section-image-texte__container { padding: var(--space-32) 0; }
+      .media-card { flex-direction: column; gap: 0; }
+      .media-card__image { flex: none; aspect-ratio: 16 / 10; border-radius: var(--radius-lg) var(--radius-lg) 0 0; }
+      .media-card__content { padding: var(--space-32); gap: var(--space-24); }
+      .media-card__text { gap: var(--space-16); }
+    }
+  </style>
+</head>
+<body>
+  <section class="section-image-texte">
+    <div class="section-image-texte__container">
+      <div class="media-card">
+        <div class="media-card__image" aria-hidden="true"></div>
+
+        <div class="media-card__content">
+          <div class="media-card__text">
+            <h2 class="media-card__title">Lorem ipsum dolor <span>sit amet consectetur</span></h2>
+            <p class="media-card__desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras suscipit urna eu mollis hendrerit. In et pharetra lacus. Duis ut eros convallis, sagittis tellus eget, lacinia arcu. Donec sollicitudin felis eu arcu dignissim eleifend.</p>
+          </div>
+
+          <a class="cta" href="#">
+            Bouton primaire
+            <img src="assets/icon-arrow.svg" alt="" width="14.406" height="11.023" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

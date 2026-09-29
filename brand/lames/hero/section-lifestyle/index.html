@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Section Lifestyle</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    /* === Tokens Studi — Généré par scripts/build-tokens.mjs depuis brand/studi-colors.json et brand/studi-tokens.json — ne pas modifier à la main (npm run tokens). === */
+    :root {
+      --brand-green:                    #0D302D;
+      --brand-green-soft:               #E9F6F5;
+      --accent-1:                       #EDF878;
+      --accent-2:                       #F87363;
+      --accent-2-soft:                  #FFCCD1;
+      --neutral-0:                      #FFFFFF;
+      --neutral-50:                     #FAFAF9;
+      --neutral-100:                    #F5F5F4;
+      --neutral-200:                    #E7E5E4;
+      --neutral-300:                    #D7D3D0;
+      --neutral-400:                    #A9A39D;
+      --neutral-500:                    #79726B;
+      --neutral-600:                    #58544D;
+      --neutral-700:                    #45413B;
+      --neutral-800:                    #2F2A28;
+      --neutral-900:                    #1D1916;
+      --neutral-950:                    #0C0A09;
+      --orange-50:                      #FEF2F3;
+      --orange-100:                     #FFE3E6;
+      --orange-200:                     #FFCCD1;
+      --orange-300:                     #FFA8A7;
+      --orange-400:                     #F87363;
+      --orange-500:                     #F04A33;
+      --orange-600:                     #DC2D0D;
+      --orange-700:                     #B82307;
+      --orange-800:                     #981F0F;
+      --orange-900:                     #7E2016;
+      --orange-950:                     #450C06;
+      --success:                        #16A34A;
+      --warning:                        #F59E0B;
+      --danger:                         #DC2626;
+      --info:                           #2563EB;
+      --accent-1-hover:                 #DAE46E;
+      --accent-1-active:                #C7D065;
+      --logo:                           #070A0D;
+      --logo-black: var(--logo); /* alias historique des maquettes */
+
+      --font-sans: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+      /* Espacements (échelle 4px) */
+      --space-4:                        4px;
+      --space-6:                        6px;
+      --space-8:                        8px;
+      --space-12:                       12px;
+      --space-16:                       16px;
+      --space-24:                       24px;
+      --space-32:                       32px;
+      --space-48:                       48px;
+
+      /* Rayons */
+      --radius-sm:                      6px;
+      --radius-md:                      8px;
+      --radius-lg:                      10px;
+      --radius-xl:                      14px;
+      --radius-full:                    9999px;
+    }
+    /* === Fin des tokens Studi === */
+
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--font-sans); background: var(--neutral-50); }
+
+    .section-lifestyle {
+      display: flex;
+      justify-content: center;
+      padding: 0 16px;
+      background: var(--neutral-50);
+    }
+
+    .section-lifestyle__container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-48);
+      width: 100%;
+      max-width: 1200px;
+      padding: var(--space-48) 0 var(--space-48);
+    }
+
+    /* Navigation */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      color: var(--neutral-900);
+    }
+    .nav__logo { display: block; width: 99.918px; height: 34.722px; }
+    .nav__logo img { display: block; width: 99.918px; height: 34.722px; }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-32);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: 14px;
+      line-height: 22px;
+    }
+    .nav__links a {
+      color: var(--neutral-600);
+      font-weight: 400;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav__links a[aria-current="page"] { color: var(--neutral-900); }
+    .nav__links a:hover { color: var(--neutral-900); }
+
+    .nav__right { display: flex; align-items: center; gap: 16px; }
+    .nav__student {
+      color: inherit;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav__student:hover { text-decoration: underline; }
+    .nav__cta {
+      display: inline-flex;
+      align-items: center;
+      height: 36px;
+      padding: 0 var(--space-16);
+      background: var(--neutral-900);
+      border-radius: var(--radius-full);
+      color: var(--neutral-0);
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .nav__cta:hover { background: var(--neutral-800); }
+    .nav__cta:active { background: var(--neutral-950); }
+
+    /* Contenu */
+    .section-lifestyle__body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-48);
+      width: 100%;
+    }
+
+    .section-lifestyle__title {
+      margin: 0;
+      width: 100%;
+      max-width: 944px; /* 940px en maquette, +4px pour compenser le rendu d'Inter et garder la même césure */
+      font-size: 48px;
+      font-weight: 600;
+      line-height: 56px;
+      text-align: center;
+      color: var(--neutral-900);
+    }
+
+    .section-lifestyle__image {
+      display: block;
+      width: 100%;
+      max-width: 940px;
+      height: 540px; /* visuel */
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+    }
+
+    .section-lifestyle__footer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-24);
+      width: 100%;
+      max-width: 800px;
+    }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-6);
+      height: 36px;
+      padding: 0 var(--space-16);
+      background: var(--neutral-900);
+      border-radius: var(--radius-full);
+      color: var(--neutral-0);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: background-color .15s ease, transform .15s ease;
+    }
+    .cta:hover { background: var(--neutral-800); }
+    .cta:active { background: var(--neutral-950); }
+    .cta:active { transform: translateY(1px); }
+    .cta:focus-visible,
+    .nav a:focus-visible { outline: 2px solid var(--neutral-900); outline-offset: 3px; }
+    .cta img { display: block; width: 14.406px; height: 11.023px; }
+
+    .section-lifestyle__caption {
+      margin: 0;
+font-size: 14px;
+      font-weight: 400;
+      line-height: 22px;
+      text-align: center;
+      color: var(--neutral-600);
+    }
+
+    @media (max-width: 900px) {
+      .nav__links { display: none; }
+      .section-lifestyle__image { height: auto; aspect-ratio: 940 / 540; }
+    }
+
+    @media (max-width: 640px) {
+      .section-lifestyle__container { gap: var(--space-32); padding: var(--space-24) 0 var(--space-32); }
+      .section-lifestyle__body { gap: var(--space-32); }
+      .section-lifestyle__title { font-size: 30px; line-height: 38px; }
+      .nav__student { display: none; }
+      .cta { white-space: normal; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <section class="section-lifestyle">
+    <div class="section-lifestyle__container">
+      <nav class="nav" aria-label="Navigation principale">
+        <a class="nav__logo" href="#">
+          <img src="assets/studi-logo.svg" alt="Studi" width="99.918" height="34.722" />
+        </a>
+
+        <ul class="nav__links">
+          <li><a href="#" aria-current="page">Formations</a></li>
+          <li><a href="#">Parcours</a></li>
+          <li><a href="#">Financement</a></li>
+          <li><a href="#">À propos</a></li>
+        </ul>
+
+        <div class="nav__right">
+          <a class="nav__student" href="#">Déjà élève ?</a>
+          <a class="nav__cta" href="#">Mon espace</a>
+        </div>
+      </nav>
+
+      <div class="section-lifestyle__body">
+        <h1 class="section-lifestyle__title">Vous êtes en charge d'enfants, et vous n'avez pas le temps pour vous former ?</h1>
+
+        <img class="section-lifestyle__image" src="assets/image-famille.png" alt="Une famille joue aux cubes sur le tapis du salon" />
+
+        <div class="section-lifestyle__footer">
+          <a class="cta" href="#">
+            Découvrir nos formations
+            <img src="assets/icon-arrow.svg" alt="" width="14.406" height="11.023" />
+          </a>
+          <p class="section-lifestyle__caption">Formations 100% en ligne, à votre rythme, compatibles avec votre vie de famille.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
