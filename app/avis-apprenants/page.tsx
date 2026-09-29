@@ -6,7 +6,6 @@ import { Card, CardContent } from "@/components/ui/card"
 import { TrustpilotWidget } from "@/components/lp/site"
 import { Footnotes } from "@/components/sections/footnotes"
 import { HeroCentered } from "@/components/sections/hero-centered"
-import { ImageText } from "@/components/sections/image-text"
 import { ReviewWall } from "@/components/sections/review-wall"
 import * as content from "@/content/avis-apprenants"
 
@@ -28,7 +27,6 @@ export default function Page() {
           </Card>
         </HeroCentered>
         <ReviewWall {...content.wall} />
-        <ImageText {...content.cta} />
         <Footnotes notes={content.mentions} />
       </main>
       <SiteFooter copyright={content.copyright} />

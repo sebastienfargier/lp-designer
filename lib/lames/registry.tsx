@@ -45,7 +45,7 @@ export const implementations: Implementation[] = [
   { component: "components/sections/hero-centered.tsx", basedOn: "ref-hero-lifestyle", usedIn: [AVIS] },
   { component: "components/sections/feature-columns.tsx", basedOn: "ref-avantages", usedIn: [ALTERNANCE, AOFT, MBA] },
   { component: "components/sections/media-card.tsx", basedOn: "ref-image-texte", usedIn: [ALTERNANCE] },
-  { component: "components/sections/image-text.tsx", basedOn: "ref-image-texte", usedIn: [ALTERNANCE, AOFT, MBA, AVIS] },
+  { component: "components/sections/image-text.tsx", basedOn: "ref-image-texte", usedIn: [ALTERNANCE, AOFT, MBA] },
   { component: "components/sections/offer-cards.tsx", basedOn: "ref-cards", usedIn: [MBA] },
   { component: "components/sections/tabs-section.tsx", basedOn: "ref-profils", usedIn: [ALTERNANCE, MBA] },
   { component: "components/sections/accordion-section.tsx", basedOn: "ref-accordeon", usedIn: [AOFT] },
